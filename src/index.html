@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AUTOLAVAGGIO</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self'; 
+      connect-src 'self' http://ipc.localhost https://api.d-id.com https://api-js.mixpanel.com wss://notifications.d-id.com https://fojuemdohljcqunzpagg.supabase.co;
+      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; 
+      img-src 'self' data: https://create-images-results.d-id.com; 
+      font-src 'self' https://fonts.gstatic.com; 
+      media-src 'self' https://agents-results.d-id.com;
+    " />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard/build/css/index.css">
+  </head>
+  <body>
+    <div id="logoMarca">
+      <img
+        src="./assets/logo.png"
+        alt="Logo marca AUTOLAVAGGIO"
+      />
+    </div>
+
+    <video id="video" style="display: none"></video>
+
+    <div id="error"></div>
+    <div id="ports"></div>
+
+    <div id="videoplay">
+      <video src="./assets/ISTOBAL M'NEX22.mp4" autoplay loop muted></video>
+    </div>
+
+    <div id="container">
+        <div id="agente">
+            <div >
+                <video id="videoElement" autoplay loop ></video>
+              </div>
+              <button id="speechButton" title="Speech to Text - Web Speech API (MDN)">&#127908;</button>
+
+              <div>
+                <button id="reconnectButton" title="agentManager.reconnect() -> Reconnect">Reconnect</button>
+              </div>
+              <div class="inputsDiv">
+                <textarea id="textArea" placeholder="Type a message" autofocus hidden></textarea>
+              </div>
+              <div style="display: flex;">
+
+                <select id="langSelect" title="Speech to Text - Language Selection">
+                  <option value="en_US" disabled selected>TTS Language</option>
+                  <option value="en_US" >English</option>
+                  <option value="es_ES" default>Spanish</option>
+                </select>
+              </div>
+              <div id="answers" style="max-width: 300px;"></div>
+              <div id="hidden" style="display: none;">
+                <h2 id="hidden_h2"></h2>
+              </div>
+        </div>
+
+    </div>
+
+    <input type="text" id="qr" />
+
+    <div id="tarjetas">
+      <img src="./assets/visa.png" alt="" id="visa" />
+      <img src="./assets/diners.png" alt="" id="visa" />
+      <img src="./assets/expres.png" alt="" id="visa" />
+      <img src="./assets/mastercard.png" alt="" id="visa" />
+    </div>
+
+    <div id="modal" class="modal"></div>
+    <div class="modalContainer" id="modal">
+      <div
+        class="modalCondiciones"
+        id="modalCondiciones"
+        style="font-size: 25px"
+      >
+        <input type="checkbox" name="accept" id="accept" style="height: 50px" />
+        <p>
+          He leído y estoy de acurdo con los<span style="color: aqua"> términos y condiciones</span> de la web
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-keyboard/build/index.js"></script>
+    <script type="module" src="./agent.js"></script>
+    <script type="module" src="./opcionesLavado.js"></script>
+    <script  src="./WebSpeechApi.js"></script>
+    <script>
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "servicios": [
+      {
+        "id": 1,
+        "nombre": "Lavado Basico",
+        "precio": 10.00,
+        "imagen": "./assets/pago.png",
+        "descripcion": "Lavado Basico"
+      }  
+    ]
+  }
+  

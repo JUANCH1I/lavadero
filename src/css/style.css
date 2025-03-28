@@ -1,0 +1,317 @@
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: "Russo One", sans-serif;
+  color: white;
+  width: 98%;
+}
+
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 20px;
+  align-items: center;
+}
+#formaPago > img {
+  height: 200px;
+}
+#formaPago {
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+}
+
+.ayuda{
+  display: flex;
+  justify-content: center;
+}
+#modal {
+    display: none; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 10; 
+    color: #fff;
+    font-size: 7px;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.close{
+  font-size: 30px;
+}
+
+#modal > div {
+    background: #38383d; /* Fondo blanco o el color que prefieras */
+    padding: 20px; /* Añadir algo de espacio alrededor del contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de elevación */
+    width: 40%;
+}
+
+.modal-content2{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+
+
+#modal2 {
+    display: none; /* Oculta el modal por defecto */
+    position: fixed; /* Posición fija para que siempre esté en el centro de la pantalla */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%; /* Asegura que cubra la pantalla horizontalmente */
+    height: 100%; /* Asegura que cubra la pantalla verticalmente */
+    background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
+    z-index: 10; /* Asegúrate de que esté sobre otros elementos */
+    color: #fff;
+    font-size: 7px;
+    text-align: center;
+
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+}
+
+.modalcondiciones{
+  position: fixed; /* Posición fija para que siempre esté en el centro de la pantalla */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
+  z-index: 10; /* Asegúrate de que esté sobre otros elementos */
+  color: #fff;
+  font-size: 7px;
+  text-align: center;
+
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5); /* Para compatibilidad con algunos navegadores */
+  margin: 10px; /* Opcional: aumenta el área de clic */
+}
+
+
+#tecladoNumerico button {
+    font-size: 20px;
+    margin: 5px;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+}
+
+#modalError {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #000;
+    z-index: 100;
+}
+
+#cf, #fa{
+    color: #000;
+}
+
+span{
+  color: #000;
+  font-size: 50px;
+}
+/* Estilo del área de entrada */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+/* Estilo del input */
+.input-number {
+  font-size: 3em;
+  text-align: center;
+  width: 80%; /* o un tamaño fijo, dependiendo de tus necesidades */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #fff; /* o el color que mejor se ajuste */
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparencia ligera */
+  color: #fff;
+}
+
+/* Estilo de los botones del teclado */
+.key {
+  padding: 15px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #222; /* oscuro para alto contraste */
+  color: #fff;
+  font-size: 3em;
+  transition: background-color 0.3s;
+}
+
+/* Resaltar el botón al pasar el mouse por encima */
+.key:hover {
+  background-color: #444; /* más claro al hover */
+}
+
+/* Estilo del botón presionado */
+.key:active {
+  background-color: #555; /* aún más claro al presionar */
+}
+
+/* Diseño de la cuadrícula del teclado */
+.teclado-numerico {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* tres columnas */
+  gap: 10px;
+  max-width: 500px; /* o el ancho que prefieras */
+  margin: auto;
+}
+
+
+#formaFacturacion{
+    display: flex;
+    flex-direction: column;
+}
+
+#modal2 > div {
+    background: #38383d;
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.hg-button{
+  height: 80px !important;
+}
+
+
+
+#videoplay {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+video {
+  height: 32vh;
+}
+#tarjetas {
+  position: absolute;
+  left: 50px;
+  bottom:10px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+#visa {
+  height: 80px;
+}
+.option {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 5em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.option > img {
+  height: 60vh;
+}
+button > img {
+  height: 40vh;
+}
+
+
+h1 {
+  font-size: 5em;
+}
+.option:hover {
+  background: #777;
+}
+.price {
+  float: right;
+  font-size: 1.7em;
+}
+#promo{
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+#modalqr {
+  display: none; /* Oculta el modal por defecto */
+  position: fixed; /* Posición fija para que siempre esté en el centro de la pantalla */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; /* Asegura que cubra la pantalla horizontalmente */
+  height: 100%; /* Asegura que cubra la pantalla verticalmente */
+  background-color: rgba(0,0,0,0.7); /* Fondo semitransparente */
+  z-index: 10; /* Asegúrate de que esté sobre otros elementos */
+  color: #fff;
+  font-size: 7px;
+  text-align: center;
+
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+}
+
+#qr{
+position: absolute;
+opacity: 0;
+pointer-events: none;
+}
+#promo > button{
+  color: black;
+  background-color: yellow ;
+  height: 100%;
+  width: 50%;
+  border-radius: 10px;
+  font-size: 50px;
+}
+#logoMarca {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
+
+
+
+#videoElement {
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#speechButton{
+  height: 100px;
+  width: 300px;
+}

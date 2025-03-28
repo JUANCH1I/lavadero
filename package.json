@@ -1,0 +1,22 @@
+{
+  "name": "lavadero",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@d-id/client-sdk": "^1.0.19-beta.138",
+    "@tauri-apps/api": "^2.2.0",
+    "escpos-printer-toolkit": "^1.0.8",
+    "pdf-to-printer": "^5.6.0",
+    "pdfkit": "^0.16.0",
+    "tauri-plugin-printer-api": "github:catfo435/tauri-plugin-printer"
+  }
+}
