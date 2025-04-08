@@ -17,6 +17,7 @@ use tauri::Manager;
 use tauri_plugin_printer;
 use uuid::Uuid;
 use std::sync::{Arc, Mutex};
+use std::process::Command;
 #[derive(Deserialize)]
 struct FacturaDatos {
     numero: String,
@@ -311,100 +312,100 @@ fn parse_transaction_output(output: &str) -> Transaction {
     }
 }
 
-/// Ejecuta el proceso de pago invocando "dotnet run" y procesa la salida para generar un JSON
-// fn realizar_pago_desde_consola(_ip: &str, monto: &str) -> String {
-//     // Nota: el parámetro ip se recibe pero no se utiliza, como en el original C#.
-//     let project_path = "C:/Users/USUARIO/Desktop/data/DatafastConnection/DatafastConnection.csproj";
+// Ejecuta el proceso de pago invocando "dotnet run" y procesa la salida para generar un JSON
+fn realizar_pago_desde_consola(_ip: &str, monto: &str) -> String {
+    // Nota: el parámetro ip se recibe pero no se utiliza, como en el original C#.
+    let project_path = "C:/Users/USUARIO/Desktop/data/DatafastConnection/DatafastConnection.csproj";
 
-//     // Se construye y ejecuta el comando.
-//     let output_result = Command::new("dotnet")
-//         .args(&["run", "--project", project_path, "pago", monto])
-//         .output();
+    // Se construye y ejecuta el comando.
+    let output_result = Command::new("dotnet")
+        .args(&["run", "--project", project_path, "pago", monto])
+        .output();
 
-//     match output_result {
-//         Ok(output) => {
-//             let stdout = String::from_utf8_lossy(&output.stdout).to_string();
-//             let stderr = String::from_utf8_lossy(&output.stderr).to_string();
+    match output_result {
+        Ok(output) => {
+            let stdout = String::from_utf8_lossy(&output.stdout).to_string();
+            let stderr = String::from_utf8_lossy(&output.stderr).to_string();
 
-//             println!("se hizo la llamada");
-//             println!("salida: {}", stdout);
+            println!("se hizo la llamada");
+            println!("salida: {}", stdout);
 
-//             if !stderr.trim().is_empty() {
-//                 println!("Error: {}", stderr);
-//                 return "error".to_string();
-//             }
-
-//             if stdout.contains("Codigo de Respuesta: 00") && stdout.contains("APROBADA TRANS.") {
-//                 println!("Devolvió success");
-//                 let transaction = parse_transaction_output(&stdout);
-//                 json!({
-//                     "status": "success",
-//                     "transaction": transaction,
-//                 })
-//                 .to_string()
-//             } else if stdout.contains("TRANS CANCELADA") {
-//                 let transaction = parse_transaction_output(&stdout);
-//                 json!({
-//                     "status": "cancelled",
-//                     "transaction": transaction,
-//                 })
-//                 .to_string()
-//             } else if stdout.contains("RESULTADO: ERROR") {
-//                 if let Some(pos) = stdout.find("MENSAJE:") {
-//                     let msg = stdout[pos + "MENSAJE:".len()..].trim().to_string();
-//                     println!("Devolvió error");
-//                     json!({
-//                         "status": "error",
-//                         "message": msg,
-//                     })
-//                     .to_string()
-//                 } else {
-//                     println!("Devolvió error (sin mensaje)");
-//                     json!({
-//                         "status": "error",
-//                     })
-//                     .to_string()
-//                 }
-//             } else {
-//                 println!("Devolvió error2");
-//                 json!({
-//                     "status": "error",
-//                 })
-//                 .to_string()
-//             }
-//         }
-//         Err(e) => {
-//             println!("Error al ejecutar la aplicación de consola: {}", e);
-//             "error".to_string()
-//         }
-//     }
-// }
-
-fn realizar_pago_desde_consola(ip: &str, monto: &str) -> String {
-    // Aquí iría la lógica real para invocar el proceso "dotnet run ..." y procesar la salida.
-    // Para efectos del ejemplo, simulamos la respuesta.
-    if monto == "000000000100" {
-        json!({
-            "status": "success",
-            "transaction": {
-                "ip": "192.168.0.102",
-                "amount": "000000000100",
-                "NombreGrupoTarjeta": "Visa",
-                "auth": "1234567890123456"
+            if !stderr.trim().is_empty() {
+                println!("Error: {}", stderr);
+                return "error".to_string();
             }
-        })
-        .to_string()
-    }
-     else {
-        json!({
-            "status": "error",
-            
-            "nombreGrupoTarjeta": "",
-            "auth": ""
-        })
-        .to_string()
+
+            if stdout.contains("Codigo de Respuesta: 00") && stdout.contains("APROBADA TRANS.") {
+                println!("Devolvió success");
+                let transaction = parse_transaction_output(&stdout);
+                json!({
+                    "status": "success",
+                    "transaction": transaction,
+                })
+                .to_string()
+            } else if stdout.contains("TRANS CANCELADA") {
+                let transaction = parse_transaction_output(&stdout);
+                json!({
+                    "status": "cancelled",
+                    "transaction": transaction,
+                })
+                .to_string()
+            } else if stdout.contains("RESULTADO: ERROR") {
+                if let Some(pos) = stdout.find("MENSAJE:") {
+                    let msg = stdout[pos + "MENSAJE:".len()..].trim().to_string();
+                    println!("Devolvió error");
+                    json!({
+                        "status": "error",
+                        "message": msg,
+                    })
+                    .to_string()
+                } else {
+                    println!("Devolvió error (sin mensaje)");
+                    json!({
+                        "status": "error",
+                    })
+                    .to_string()
+                }
+            } else {
+                println!("Devolvió error2");
+                json!({
+                    "status": "error",
+                })
+                .to_string()
+            }
+        }
+        Err(e) => {
+            println!("Error al ejecutar la aplicación de consola: {}", e);
+            "error".to_string()
+        }
     }
 }
+
+// fn realizar_pago_desde_consola(ip: &str, monto: &str) -> String {
+//     // Aquí iría la lógica real para invocar el proceso "dotnet run ..." y procesar la salida.
+//     // Para efectos del ejemplo, simulamos la respuesta.
+//     if monto == "000000000100" {
+//         json!({
+//             "status": "success",
+//             "transaction": {
+//                 "ip": "192.168.0.102",
+//                 "amount": "000000000100",
+//                 "NombreGrupoTarjeta": "Visa",
+//                 "auth": "1234567890123456"
+//             }
+//         })
+//         .to_string()
+//     }
+//      else {
+//         json!({
+//             "status": "error",
+            
+//             "nombreGrupoTarjeta": "",
+//             "auth": ""
+//         })
+//         .to_string()
+//     }
+// }
 
 
 #[tauri::command]
@@ -412,7 +413,7 @@ async fn realizar_pago(window: Window) -> Result<Value, String> {
     println!("Evento nuevoPago recibido.");
 
     // Llamamos a la función de pago (ejemplo con monto fijo).
-    let resultado = realizar_pago_desde_consola("192.168.0.105", "000000000100");
+    let resultado = realizar_pago_desde_consola("192.168.3.101", "000000000100");
 
     // Parseamos el string JSON que retorna la función.
     let parsed: Value = serde_json::from_str(&resultado)

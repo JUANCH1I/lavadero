@@ -9,4 +9,7 @@ export default defineConfig({
     // Directorio de salida (por ejemplo, "dist") relativo a la raíz del proyecto.
     outDir: '../dist',
   },
+  optimizeDeps: {
+    include: ['@d-id/client-sdk', '@tauri-apps/api'],
+  },
 })
